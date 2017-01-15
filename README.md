@@ -19,6 +19,11 @@ npm adduser
 npm init
 ```
 
+##Publishing to npm
+
+```
+npm publish
+```
 
 
 
