@@ -1,0 +1,23 @@
+{
+  "name": "npm-package-example",
+  "version": "1.0.0",
+  "description": "This is a simple npm package example",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/creativedeveloper-net/npm-package-example.git"
+  },
+  "keywords": [
+    "npm",
+    "package"
+  ],
+  "author": "'Tomasz",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/creativedeveloper-net/npm-package-example/issues"
+  },
+  "homepage": "https://github.com/creativedeveloper-net/npm-package-example#readme"
+}
