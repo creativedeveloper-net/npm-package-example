@@ -78,6 +78,37 @@ To run test:
 npm run test
 ```
 
+## Automating Releases with semantic-release
+```
+npm install -g semantic-release-cli
+semantic-release-cli setup
+```
+in .travis.yml add:
+```
+script:
+  - npm run test
+```
+
+## Writing conventional commits with commitizen
+```
+npm install -D commitizen cz-conventional-changelog
+```
+Add following lines to package.json:
+```
+"scripts": {
+    "commit": "git-cz",
+```
+```
+"czConfig": {
+    "path": "node_modules/cz-conventional-changelog"
+}
+```
+Now you can commit yourchanges using:
+```
+npm run commit
+```
+
+
 
 
 

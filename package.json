@@ -1,14 +1,16 @@
 {
   "name": "npm-package-example",
-  "version": "1.0.0",
+  "version": "0.0.0-development",
   "description": "This is a simple npm package example",
   "main": "src/index.js",
   "scripts": {
-    "test": "mocha src/index.test.js"
+    "commit": "git-cz",
+    "test": "mocha src/index.test.js",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/creativedeveloper-net/npm-package-example.git"
+    "url": "https://github.com/creativedeveloper-net/npm-package-example.git"
   },
   "keywords": [
     "npm",
@@ -22,6 +24,12 @@
   "homepage": "https://github.com/creativedeveloper-net/npm-package-example#readme",
   "devDependencies": {
     "chai": "3.5.0",
-    "mocha": "3.2.0"
+    "commitizen": "2.9.5",
+    "cz-conventional-changelog": "1.2.0",
+    "mocha": "3.2.0",
+    "semantic-release": "^6.3.2"
+  },
+  "czConfig": {
+    "path": "node_modules/cz-conventional-changelog"
   }
 }
