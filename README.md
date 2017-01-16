@@ -234,7 +234,7 @@ update package.json "script" section:
 "check-coverage": "nyc check-coverage --statements 100 --branches 100 --functions 100 --lines 100",
  "report-coverage": "cat ./coverage/lcov.info | codecov",
  "watch:test": "npm t -- --watch",
- "test": "mocha src/index.test.js --compilers js:babel-register",
+ "test": "mocha src/index.test.js --compilers js:babel-core/register",
  "cover": "nyc npm t",
 ```
 and "ghooks" section:
@@ -251,6 +251,13 @@ script:
   - npm run build
 ```
 
+## Limit Built Branches on Travis
+update .travis.yml to include:
+```
+branches:
+  only:
+    - master
+```
 
 
 
