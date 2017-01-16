@@ -107,6 +107,11 @@ Now you can commit yourchanges using:
 ```
 npm run commit
 ```
+In "List any breaking changes or issues closed by this change:" step you can use:
+```
+closes #1
+```
+if your update closes any existing issue
 
 
 
