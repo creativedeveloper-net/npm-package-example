@@ -178,6 +178,7 @@ You can go to [shields.io](https://shields.io/) and use their banges for example
 [![version](https://img.shields.io/npm/v/npm-package-example.svg?style=flat-square)](http://npm.im/npm-package-example)
 [![downloads](https://img.shields.io/npm/dm/npm-package-example.svg?style=flat-square)](http://npm-stat.com/charts.html?package=npm-package-example&from=2015-08-01)
 [![MIT License](https://img.shields.io/npm/l/npm-package-example.svg?style=flat-square)](http://opensource.org/licenses/MIT)
+
 use this code:
 ```
 [![travis build](https://img.shields.io/travis/creativedeveloper-net/npm-package-example.svg?style=flat-square)](https://travis-ci.org/creativedeveloper-net/npm-package-example)
@@ -187,6 +188,68 @@ use this code:
 [![MIT License](https://img.shields.io/npm/l/npm-package-example.svg?style=flat-square)](http://opensource.org/licenses/MIT)
 ```
 
+## Adding ES6 Support
+```
+npm i -D babel-cli
+npm i -D rimraf
+npm i -D babel-preset-es2015 babel-preset-stage-2
+```
+update package.json to include:
+```
+ "scripts": {
+    "prebuild": "rimraf dist",
+    "build": "babel --copy-files --out-dir dist --ignore *.test.js src",
+ ```
+ and
+ ```
+   "babel": {
+     "presets": ["es2015", "stage-2"]
+   }
+ ```
+ and also update "main" section to use dist folder instead of src:
+ ```
+ "main": "dist/index.js",
+ ```
+ update .travis.yml to include:
+ ```
+ script:
+   - npm run test
+   - npm run check-coverage
+   - npm run build
+```
+add "files" section to package.json to include only necessary files:
+```
+  "files": [
+    "dist",
+    "README.md"
+  ],
+```
+
+## Adding ES6 Support to Tests using Mocha and Babel
+```
+npm i -D nyc
+```
+update package.json "script" section:
+```
+"check-coverage": "nyc check-coverage --statements 100 --branches 100 --functions 100 --lines 100",
+ "report-coverage": "cat ./coverage/lcov.info | codecov",
+ "watch:test": "npm t -- --watch",
+ "test": "mocha src/index.test.js --compilers js:babel-register",
+ "cover": "nyc npm t",
+```
+and "ghooks" section:
+```
+    "ghooks": {
+      "pre-commit": "npm run cover && npm run check-coverage"
+    },
+```
+update .travis.yml "script" section:
+```
+script:
+  - npm run cover
+  - npm run check-coverage
+  - npm run build
+```
 
 
 
