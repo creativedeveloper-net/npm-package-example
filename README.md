@@ -298,6 +298,8 @@ update package.json "script" section:
     "build:umd": "webpack --output-filename index.umd.js",
     "build:umd.min": "webpack --output-filename index.umd.min.js -p",
  ```
+ You can now access your package via url like this:
+[ https://unpkg.com/npm-package-example/dist/index.umd.js]( https://unpkg.com/npm-package-example/dist/index.umd.js)
 
  
 
