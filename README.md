@@ -126,6 +126,53 @@ Update package.json to include:
 }
 ```
 
+## Adding code coverage recording with Istanbul
+```
+npm install -D istanbul
+```
+update package.json to include:
+```
+"scripts": {
+    "test": "istanbul cover -x *.test.js ./node_modules/mocha/bin/_mocha -- -R spec src/index.test.js",
+```
+
+## Adding code coverage checking
+update package.json to include:
+```
+  "scripts": {
+    "check-coverage": "istanbul check-coverage --statements 100 --branches 100 --functions 100 --lines 100",
+```
+and
+```
+  "config": {
+    "ghooks": {
+      "pre-commit": "npm run test && npm run check-coverage"
+```
+update .travis.yml to include:
+```
+script:
+  - npm run test
+  - npm run check-coverage
+```
+
+## Add code coverage reporting
+signup for [codecov.io](https://codecov.io/) account (if you don't have already)
+```
+npm install -D codecov.io
+```
+update package.json to include:
+```
+ "scripts": {
+    "report-coverage": "cat ./coverage/lcov.info | codecov",
+```
+update .travis.yml to include:
+```
+after_success:
+  - npm run report-coverage
+```
+
+
+
 
 
 
