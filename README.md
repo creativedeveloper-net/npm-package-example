@@ -259,6 +259,49 @@ branches:
     - master
 ```
 
+## Add a browser build to an npm module
+```
+npm i -D webpack
+```
+Add new file C:\Users\sciurkat\Desktop\My files\webpack.config.babel.js with this code:
+```
+import {join} from 'path'
+
+const include = join(__dirname, 'src')
+
+export default {
+  entry: './src/index',
+  output: {
+    path: join(__dirname, 'dist'),
+    libraryTarget: 'umd',
+    library: 'npmPackageExample',
+  },
+  devtool: 'source-map',
+  module: {
+    loaders: [
+      {test: /\.js$/, loader: 'babel', include},
+      {test: /\.json$/, 'loader': 'json', include},
+    ]
+  }
+}
+```
+install
+```
+npm i -D babel-loader json-loader
+npm install npm-run-all --save-dev
+```
+
+update package.json "script" section:
+```
+    "build": "npm-run-all --parallel build:*",
+    "build:main": "babel --copy-files --out-dir dist --ignore *.test.js src",
+    "build:umd": "webpack --output-filename index.umd.js",
+    "build:umd.min": "webpack --output-filename index.umd.min.js -p",
+ ```
+
+ 
+
+
 
 
 
