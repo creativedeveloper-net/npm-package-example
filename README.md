@@ -113,6 +113,18 @@ closes #1
 ```
 if your update closes any existing issue
 
+## Automatically running tests before commits with ghooks
+```
+npm i -D ghooks
+```
+Update package.json to include:
+```
+"config": {
+    "ghooks": {
+        "pre-commit": "npm run test"
+    }
+}
+```
 
 
 
