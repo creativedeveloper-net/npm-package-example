@@ -13,14 +13,16 @@ node_js:
   - '7'
   - '6'
 addons:
-  sonarqube: true
+  sonarqube:
+    token:
+      secure: Ab2IseCJV+TdYiVGmCIybcU9dmm2doDf7WLsB9hnzNrgOJKJXmnxDqZ6Px9vmdgaJOlybCFaPhVnmR16EHombzBqQ5ZRlK96B+cBt3TsVH5DNv2whMOEQvuFC+Ufj5KwJOgApui9QvNAmLQnjP+RpQ/z2dKvvWTOfm2UdsjSYyaw5aDySU81IfThZvhwdjovTsdmTyTasJCkYBHxS+XegWtu44FlQu0OGrs3Go40vGFWoF465ncrbjGXVqLcsMlHg5dux3875RmcJ1HK8tOdL1eo4cTxajK1LSmSqzuEFxASqgJzfUvWUBQzPoMJ8710GHeQYBOJo+MMK6z9ZsvUc26zpaKbko2BJeNzWl3vcgmDIr26zOGrP2Lx+NSn/fE52jdCAmjxJ8GTCYNUnwukZSsjgjqhXxjqWDvbQ4gViHQT10quQ06XSQe//g3PdGI4MFtq7s0/0ARPWbOAE05uMUUCKJq6wHZgPoIEykCOEjrrj31S76QlBC+vxyDN34ClN7ehK7TMx+L5berr/TK/qPndqmRQGteR2q6mkfVTP1JN+yCX/0BocljPjdqPo1C6d6PDxqBS8+ElfGcvM2VgsJmKehlGZS2pb5JEwqdWv88kDgpqkrFTjKPl0R+450CE5P4H3u55NgyoCHvHFJbmNbWrF+wAc+bEjC9Te/O+AIc=
 before_script:
   - npm prune
 script:
   - npm run cover
   - npm run check-coverage
   - npm run build
-  - sonar-scanner -Dsonar.login=$SONAR_TOKEN -X
+  - sonar-scanner -X
 after_success:
   - npm run report-coverage
   - npm run semantic-release
