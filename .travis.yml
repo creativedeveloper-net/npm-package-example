@@ -22,7 +22,7 @@ script:
   - npm run cover
   - npm run check-coverage
   - npm run build
-  - sonar-scanner
+  - sonar-scanner -Dsonar.login=$SONAR_TOKEN
 after_success:
   - npm run report-coverage
   - npm run semantic-release
