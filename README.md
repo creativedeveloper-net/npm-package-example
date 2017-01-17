@@ -1,4 +1,10 @@
 # npm package example
+[![travis build](https://img.shields.io/travis/creativedeveloper-net/npm-package-example.svg?style=flat-square)](https://travis-ci.org/creativedeveloper-net/npm-package-example)
+[![codecov coverage](https://img.shields.io/codecov/c/github/creativedeveloper-net/npm-package-example.svg?style=flat-square)](https://codecov.io/github/creativedeveloper-net/npm-package-example)
+[![version](https://img.shields.io/npm/v/npm-package-example.svg?style=flat-square)](http://npm.im/npm-package-example)
+[![downloads](https://img.shields.io/npm/dm/npm-package-example.svg?style=flat-square)](http://npm-stat.com/charts.html?package=npm-package-example&from=2015-08-01)
+[![MIT License](https://img.shields.io/npm/l/npm-package-example.svg?style=flat-square)](http://opensource.org/licenses/MIT)
+
 This is a simple npm package example based on [How to Write an Open Source JavaScript Library](https://egghead.io/courses/how-to-write-an-open-source-javascript-library) course from [egghead.io](https://egghead.io/)
 
 ## Configuring npm and creating a package.json
@@ -301,9 +307,35 @@ update package.json "script" section:
  You can now access your package via url like this:
 [ https://unpkg.com/npm-package-example/dist/index.umd.js]( https://unpkg.com/npm-package-example/dist/index.umd.js)
 
- ## Integrating SonarQube
+## Integrating SonarQube
  [https://docs.travis-ci.com/user/sonarqube/](https://docs.travis-ci.com/user/sonarqube/)
-
+ 
+ generate token for sonarqube:
+ [https://sonarqube.com/account/security/](https://sonarqube.com/account/security/)
+ 
+ encrypt that token here:
+ [https://travis-encrypt.github.io/](https://travis-encrypt.github.io/)
+ 
+ update .travis.yml to inlcude:
+ ```
+ script:
+   - npm run cover
+   - npm run check-coverage
+   - npm run build
+   - sonar-scanner -Dsonar.login=$SONAR_TOKEN -X
+   ```
+   
+  add sonar-project.properties file with code like this (update your projectKey and projectName):
+  ```
+  sonar.projectKey=creativedeveloper.net:npm-package-example
+  sonar.projectName=creativedeveloper.net::npm-package-example
+  sonar.projectVersion=1.0
+  sonar.language=js
+  sonar.sources=src/index.js
+  sonar.sourceEncoding=UTF-8
+  sonar.tests=src/index.test.js
+  sonar.javascript.lcov.reportPath=coverage/lcov.info
+  ```
 
 
 
