@@ -301,7 +301,9 @@ update package.json "script" section:
  You can now access your package via url like this:
 [ https://unpkg.com/npm-package-example/dist/index.umd.js]( https://unpkg.com/npm-package-example/dist/index.umd.js)
 
- 
+ ## Integrating SonarQube
+ [https://docs.travis-ci.com/user/sonarqube/](https://docs.travis-ci.com/user/sonarqube/)
+
 
 
 

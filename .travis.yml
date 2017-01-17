@@ -10,12 +10,17 @@ notifications:
 node_js:
   - '7'
   - '6'
+addons:
+  sonarqube:
+    token:
+      secure: ZJdZytfc5kwIMmoCzLqASTtWqI/mCLEkYiTPpZRu1+tMw15S7tILxrWnsyS8z7s27eN6ghTH7AVfsdU0TDqVnkHG3g0T88UY68ulOe4czYJSA9ldXTtKF4171aG4Zl16QQvYBmFkmJNueo/CkgbF6hSIBx98WGB38OhywRm1fmNM+DHPpx6nxeuvbuZ4q/H1DRtCBnyc1aCskhC8kXjr2UMRzPuNYmIIXenCj0TGxE0k/e40DML5bBVpA0rHQMaVKeVZzMxsNTfy6inuCsCYvjCPOz2g0iIcLKZjj7Ov3zdk+gStW2DWkNjMQUBmqBnDsndZC07f73l9rV2hfvOWPBO9OOaai5mzv0iz9fb0XmbN7xuwJslE1PxMH7ZVjzEjIeqz5cxaOlijb6qB0HDSURKoBCZwbCGANATslXjecxX00vzPiRi/bL61xxunDdJvZxpns16HQbEYPGVkvEeviZPDh04qAOjhBrvaLZe5ebWt2vER+WBik8tNB0r8+TWFVfYhflQMYKJCNQFaL5zJbobghc3DgyP7BPKUjiJLmB0+AeIhQ1xQCWlBonU+gMiNSuhTX9n3fOtOT3oRW6C8XRPuWhlFpLdRgrS6exoBt794kSxxdIyqcj79Bqm9L611aflgGgWV4Z7ICb2lnqHHd6jd87TsLlUiOD7Mh8Bj96Q=
 before_script:
   - npm prune
 script:
   - npm run cover
   - npm run check-coverage
   - npm run build
+  - sonar-scanner
 after_success:
   - npm run report-coverage
   - npm run semantic-release
