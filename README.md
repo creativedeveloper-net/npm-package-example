@@ -337,9 +337,24 @@ update package.json "script" section:
   sonar.javascript.lcov.reportPath=coverage/lcov.info
   ```
 
-
-
-
+## Add jshint
+install jshint
+```
+npm install jshint -g
+```
+update package.json:
+```
+  "scripts": {
+    "check-jshint": "jshint src/index.js",
+```
+and:
+```
+  "config": {
+    "ghooks": {
+      "pre-commit": "npm run cover && npm run check-coverage && npm run check-jshint"
+    }
+  },
+```
 
 
 

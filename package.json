@@ -10,6 +10,7 @@
     "watch:test": "npm t -- --watch",
     "test": "mocha src/index.test.js --compilers js:babel-core/register",
     "cover": "nyc npm t",
+    "check-jshint": "jshint src/index.js",
     "prebuild": "rimraf dist",
     "build": "npm-run-all --parallel build:*",
     "build:main": "babel --copy-files --out-dir dist --ignore *.test.js src",
@@ -46,6 +47,7 @@
     "cz-conventional-changelog": "1.2.0",
     "ghooks": "2.0.0",
     "istanbul": "0.4.5",
+    "jshint": "2.9.4",
     "json-loader": "0.5.4",
     "mocha": "3.2.0",
     "npm-run-all": "4.0.0",
@@ -59,7 +61,7 @@
   },
   "config": {
     "ghooks": {
-      "pre-commit": "npm run cover && npm run check-coverage"
+      "pre-commit": "npm run cover && npm run check-coverage && npm run check-jshint"
     }
   },
   "babel": {
